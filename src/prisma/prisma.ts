@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 
 //This line creates a variable named globalForPrisma and attempts to cast globalThis
 //(the global object in a browser or the global object in Node.js)
@@ -12,4 +12,4 @@ const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
 //it creates a new instance of PrismaClient.
 export const prisma = globalForPrisma.prisma || new PrismaClient();
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;

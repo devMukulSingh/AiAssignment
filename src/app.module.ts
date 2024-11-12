@@ -9,12 +9,12 @@ import { ApiKeysModule } from './apikeys/apikeys.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true
+      isGlobal: true,
     }),
     AdminModule,
     TelegrafModule.forRootAsync({
       botName: 'weatherUpdate',
-      useFactory: async (configService: ConfigService) => ({
+      useFactory: async () => ({
         token: process.env.BOT_TOKEN,
         include: [BotModule],
       }),
@@ -22,9 +22,7 @@ import { ApiKeysModule } from './apikeys/apikeys.module';
     }),
     BotModule,
     BotSettingsModule,
-    ApiKeysModule
+    ApiKeysModule,
   ],
 })
-export class AppModule {
-  
-}
+export class AppModule {}
