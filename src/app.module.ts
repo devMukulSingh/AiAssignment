@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AuthModule } from './auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { BotModule } from './bot/bot.module';
 import { TelegrafModule } from 'nestjs-telegraf';
 import { AdminModule } from './admin/admin.module';
+import { BotSettingsModule } from './botSettings/botSettings.module';
+import { ApiKeysModule } from './apikeys/apikeys.module';
 
 @Module({
   imports: [
@@ -20,9 +21,10 @@ import { AdminModule } from './admin/admin.module';
       inject: [ConfigService],
     }),
     BotModule,
-
+    BotSettingsModule,
+    ApiKeysModule
   ],
 })
 export class AppModule {
-
+  
 }
