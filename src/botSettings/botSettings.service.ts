@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Response } from 'express';
-import { InjectBot } from 'nestjs-telegraf';
+import { InjectBot} from 'nestjs-telegraf';
 import { IBotDto } from 'src/interfaces/dto.interface';
 import { Context, Telegraf } from 'telegraf';
 import { Update } from 'telegraf/typings/core/types/typegram';
