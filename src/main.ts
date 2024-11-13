@@ -8,23 +8,24 @@ import { getBotToken } from 'nestjs-telegraf';
 
 async function bootstrap() {
   const PORT = process.env.PORT || 8000;
-  const app = await NestFactory.create(AppModule , {cors:{ origin:base_url_client }});
+  const app = await NestFactory.create(AppModule, {
+    cors: { origin: base_url_client },
+  });
   const bot = app.get(getBotToken('weatherUpdate'));
 
-  app.useGlobalPipes(new ValidationPipe( ) );
-  app.use(bot.webhookCallback('/'));
+  app.useGlobalPipes(new ValidationPipe());
+  app.use(bot.webhookCallback('/secret-path'));
   app.use(
     clerkMiddleware({
       authorizedParties: [base_url_client],
       publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
       secretKey: process.env.CLERK_SECRET_KEY,
-    }), 
+    }),
   );
   app.enableCors({
-    origin: base_url_client,
+    origin: [base_url_client],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-
   });
   await app.listen(PORT);
   console.log(`Server running at PORT ${PORT} `);

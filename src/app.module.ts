@@ -17,12 +17,12 @@ import { ApiKeysModule } from './apikeys/apikeys.module';
       useFactory: async () => ({
         token: process.env.BOT_TOKEN,
         include: [BotModule],
-        launchOptions : {
+        launchOptions: {
           webhook: {
-            domain: 'https://aiassignment.onrender.com',
-            path: '/',
-          }
-        }
+            domain: `aiassignment.onrender.com`,
+            path: '/secret-path',
+          },
+        },
       }),
       inject: [ConfigService],
     }),

@@ -8,7 +8,6 @@ export class ApiKeysService {
   constructor(@InjectBot('weatherUpdate') private bot: Telegraf<Context>) {}
   async getApikeys(res: Response) {
     const token = this.bot.telegram.token;
-    this.bot;
     return res.json({
       data: {
         token,
